@@ -2,21 +2,16 @@ name: Super-Linter
 
 on: push
 
-jobs: 
-
+jobs:
   super-lint:
-    runs-on: ubuntu-latest
-    
     name: Lint code base
-
+    runs-on: ubuntu-latest
     steps:
-      - name: Checkout Code
+      - name: Checkout code
         uses: actions/checkout@v2
-      - name: Run super-linter
-        uses: github/super-linter@v4
-      - name: Printing "Job Complete!"
-        run: echo Job Complete!
-    
-    env:
-      DEFAULT_BRANCH: main
-      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Run Super-Linter
+        uses: github/super-linter@v3
+        env:
+          DEFAULT_BRANCH: main
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
